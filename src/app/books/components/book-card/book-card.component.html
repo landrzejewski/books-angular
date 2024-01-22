@@ -1,0 +1,9 @@
+<div class="card book" (click)="onSelect()"
+     [style.border-bottom-color]="book.category">
+  <img src="https://placehold.it/320x240" alt="Cover">
+  <div class="card-body">
+    <h4 class="title truncate" [class.selected]="isSelected">{{ book.title }}</h4>
+    <p class="card-text truncate authors">{{ book.authors }}</p>
+  </div>
+  <small class="text-center m-1">Bestseller</small>
+</div>
