@@ -1,7 +1,35 @@
 <div class="container">
-  <app-date *ngIf="message"></app-date>
-  <button class="btn btn-dark" (click)="sayHello()">Say hello</button>
-  <div class="message">
-    {{ message }}
+  <div class="book-form">
+    <div class="text-center">Book</div>
+    <div class="form-group">
+      <label>Title:</label>
+      <input class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Authors:</label>
+      <input class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Category:</label>
+      <input class="form-control" type="color">
+    </div>
+    <div class="form-group">
+      <input type="checkbox" class="form-check-input">
+      <label class="checkbox-label">Bestseller</label>
+    </div>
+    <button class="btn btn-danger">Cancel</button>
+    <button class="btn btn-success">Save</button>
   </div>
+
+  <div class="row justify-content-around books">
+    <div class="card book">
+      <img src="https://placehold.it/320x240" alt="Cover">
+      <div class="card-body">
+        <h4 class="card-title truncate"></h4>
+        <p class="card-text truncate"></p>
+      </div>
+      <small class="text-center m-1">Bestseller</small>
+    </div>
+  </div>
+
 </div>
