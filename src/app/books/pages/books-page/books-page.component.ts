@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {BookModel} from '../../models/book.model';
+import {BookModel, emptyBook} from '../../models/book.model';
+import {ArrayBooksService} from '../../service/array-books.service';
 
 @Component({
   selector: 'app-books-page',
@@ -10,26 +11,32 @@ export class BooksPageComponent {
 
   @Input()
   books: BookModel[] = [];
-  editedBook?: BookModel = undefined;
+  editedBook?: BookModel;
 
-  reset() {
-    this.editedBook = undefined;
+  constructor(private booksService: ArrayBooksService) {
+    this.refresh();
   }
 
-  save(book: BookModel) {
-    const bookIndex = this.findIndex(book.id);
-    if (bookIndex != -1) {
-      this.books[bookIndex] = book;
-    }
-    this.reset();
-  }
-
-  private findIndex(id: number): number {
-    return this.books.findIndex((book) => book.id === id);
+  add() {
+    this.editedBook = emptyBook();
   }
 
   edit(book: BookModel) {
     this.editedBook = {...book};
+  }
+
+  save(book: BookModel) {
+    this.booksService.save(book);
+    this.reset();
+  }
+
+  reset() {
+    this.editedBook = undefined;
+    this.refresh();
+  }
+
+  private refresh() {
+    this.books = this.booksService.getAll();
   }
 
 }
