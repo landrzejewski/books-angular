@@ -24,7 +24,7 @@ export class AppComponent {
       authors: 'Marek Nowak',
       category: '#4ba5ff',
       genre: 'Education',
-      rating: 5,
+      rating: 3,
       isBestseller: false
     }
   ];

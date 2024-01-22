@@ -8,5 +8,6 @@
                  [book]="book" class="book-card"
                  [isSelected]="book.id === editedBook?.id"
                  (select)="edit(book)">
+    <app-rating book-card-footer [rating]="book.rating"></app-rating>
   </app-book-card>
 </div>
