@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  message= '';
+
+  sayHello() {
+    this.message = 'Hello Angular';
+  }
+
 }
