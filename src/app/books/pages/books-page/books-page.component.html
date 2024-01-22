@@ -7,6 +7,6 @@
   <app-book-card *ngFor="let book of books"
                  [book]="book" class="book-card"
                  [isSelected]="book.id === editedBook?.id"
-                 (select)="edit($event)">
+                 (select)="edit(book)">
   </app-book-card>
 </div>
