@@ -3,35 +3,3 @@
 }
 
 
-.checkbox-label {
-  margin-left: 8px;
-}
-
-.form-group {
-  padding: 8px;
-}
-
-.book-form {
-  border: 1px solid lightgray;
-  padding: 32px;
-  border-radius: 4px;
-}
-
-.books {
-  padding: 32px;
-}
-
-.book {
-  width: 320px;
-  min-height: 400px;
-  border-bottom: 4px solid black;
-  margin-bottom: 30px;
-  height: 460px;
-}
-
-
-button {
-  margin: 8px 8px 4px 0;
-}
-
-

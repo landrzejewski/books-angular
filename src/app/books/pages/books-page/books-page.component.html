@@ -1,1 +1,12 @@
-<p>books-page works!</p>
+<app-book-form *ngIf="editedBook"
+               [book]="editedBook"
+               (cancel)="reset()"
+               (submit)="save($event)"/>
+
+<div class="row justify-content-around books">
+  <app-book-card *ngFor="let book of books"
+                 [book]="book" class="book-card"
+                 [isSelected]="book.id === editedBook?.id"
+                 (select)="edit($event)">
+  </app-book-card>
+</div>

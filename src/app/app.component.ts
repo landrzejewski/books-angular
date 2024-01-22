@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BookModel} from "./book.model";
+import {BookModel} from './books/models/book.model';
 
 @Component({
   selector: 'app-root',
@@ -28,42 +28,6 @@ export class AppComponent {
       isBestseller: false
     }
   ];
-
-  editedBook?: BookModel = undefined;
-
-  reset() {
-    this.editedBook = undefined;
-  }
-
-  save() {
-    if (this.editedBook) {
-      const bookIndex = this.findIndex(this.editedBook.id);
-      if (bookIndex != -1) {
-        this.books[bookIndex] = this.editedBook;
-      }
-    }
-    this.reset();
-  }
-
-  private findIndex(id: number): number {
-    return this.books.findIndex((book) => book.id === id);
-  }
-
-  edit(book: BookModel) {
-    this.editedBook = {...book};
-  }
-
-  getValue($event: Event): string {
-    const input = $event.target as HTMLInputElement;
-    return input.value;
-  }
-
-  get authorsStyle() {
-    return {
-      color: 'gray',
-      letterSpacing: '2px'
-    };
-  }
 
 }
 
