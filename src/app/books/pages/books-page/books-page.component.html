@@ -7,7 +7,7 @@
 <app-book-form *ngIf="editedBook"
                [book]="editedBook"
                (cancel)="reset()"
-               (submitBook)="save($event)"/>
+               (save)="save($event)"/>
 
 <div class="row justify-content-around books">
   <app-book-card *ngFor="let book of books"

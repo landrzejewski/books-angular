@@ -12,7 +12,7 @@ export class BookFormComponent {
   book = emptyBook();
   // submit name collide with default event
   @Output()
-  submitBook = new EventEmitter<BookModel>();
+  save = new EventEmitter<BookModel>();
   @Output()
   cancel = new EventEmitter<void>();
 
