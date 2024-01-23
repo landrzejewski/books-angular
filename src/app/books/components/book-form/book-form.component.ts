@@ -13,7 +13,7 @@ export class BookFormComponent {
   book = emptyBook();
   // submit name collide with default event
   @Output()
-  submitBook = new EventEmitter<BookModel>()
+  save = new EventEmitter<BookModel>()
   @Output()
   cancel = new EventEmitter<void>();
   genres = ['Education', 'Action', 'Novel', 'Fiction', 'Romans'];
@@ -21,7 +21,7 @@ export class BookFormComponent {
 
   saveBook(bookForm: NgForm) {
     if (bookForm.valid) {
-      this.submitBook.emit(this.book);
+      this.save.emit(this.book);
     }
   }
 
