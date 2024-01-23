@@ -1,8 +1,10 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {BookModel, emptyBookId} from '../models/book.model';
+import {BooksService} from "./books.service";
+import {Observable, of, throwError} from "rxjs";
 
 @Injectable()
-export class ArrayBooksService {
+export class ArrayBooksService implements BooksService {
 
   constructor(@Inject("booksData") @Optional() private books: BookModel[]) {
     if (!books) {
@@ -10,30 +12,34 @@ export class ArrayBooksService {
     }
   }
 
-  getAll(): BookModel[] {
-    return this.cloneBooks();
+  getAll(): Observable<BookModel[]> {
+    return of(this.cloneBooks());
   }
 
-  save(book: BookModel): BookModel {
+  save(book: BookModel): Observable<BookModel> {
     return emptyBookId === book.id ? this.add(book) : this.update(book);
   }
 
-  private add(book: BookModel): BookModel {
-    const newBook = {...book, id: Date.now()};
-    this.books = [...this.cloneBooks(), newBook];
-    return newBook;
+  filter(property: string, value: string): Observable<BookModel[]> {
+    return throwError(() => 'Method not implemented.');
   }
 
-  private update(book: BookModel): BookModel {
+  private add(book: BookModel): Observable<BookModel> {
+    const newBook = {...book, id: Date.now()};
+    this.books = [...this.cloneBooks(), newBook];
+    return of(newBook);
+  }
+
+  private update(book: BookModel): Observable<BookModel> {
     const bookIndex = this.getBookIndex(book.id);
     if (bookIndex !== -1) {
       const editedBook = {...book};
       const booksClone = this.cloneBooks();
       booksClone[bookIndex] = editedBook;
       this.books = booksClone;
-      return editedBook;
+      return of(editedBook);
     } else {
-      throw new Error('Book not found');
+      return throwError(() =>'Book not found');
     }
   }
 
