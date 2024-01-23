@@ -30,6 +30,6 @@
     <input name="isBestseller" type="checkbox" class="form-check-input" [(ngModel)]="book.isBestseller">
     <label class="checkbox-label">Bestseller</label>
   </div>
-  <button class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
+  <button type="button" class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
   <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Save</button>
 </form>
