@@ -24,7 +24,7 @@ export class HttpBooksService implements BooksService {
     }
 
     filter(property: string, value: string): Observable<BookModel[]> {
-        throw new Error("Method not implemented.");
+        return this.httpClient.get<BookModel[]>(`${this.api.books}?${property}_like=${value}`);
     }
 
 }

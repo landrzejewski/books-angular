@@ -1,7 +1,7 @@
 import {Component, Inject, Input} from '@angular/core';
 import {BookModel, emptyBook} from '../../models/book.model';
 import {BooksService} from "../../service/books.service";
-import {EMPTY, Observable} from "rxjs";
+import {EMPTY, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-books-page',
@@ -41,6 +41,10 @@ export class BooksPageComponent {
 
   private refresh() {
     this.books$ = this.booksService.getAll();
+  }
+
+  onQueryResult(books: BookModel[]) {
+    this.books$ = of(books);
   }
 
 }

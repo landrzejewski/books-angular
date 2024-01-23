@@ -2,7 +2,7 @@
   "books": [
     {
       "id": "1",
-      "title": "Angular in actio2",
+      "title": "Angular in action",
       "authors": "Jan Kowalski",
       "category": "#ffbe3c",
       "genre": "Education",

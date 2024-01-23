@@ -9,11 +9,20 @@
                (cancel)="reset()"
                (submit)="save($event)"/>
 
-<div class="row justify-content-around books">
-  <app-book-card *ngFor="let book of books$ | async"
+<app-books-search *ngIf="!editedBook" (queryResult)="onQueryResult($event)"></app-books-search>
+
+<div class="row justify-content-around books" *ngIf="books$ | async as books; else loadingIndicator">
+  <!--<app-book-card *ngFor="let book of books$ | async"-->
+  <app-book-card *ngFor="let book of books"
                  [book]="book" class="book-card"
                  [isSelected]="book.id === editedBook?.id"
                  (select)="edit(book)">
     <app-rating book-card-footer [rating]="book.rating"></app-rating>
   </app-book-card>
 </div>
+
+<ng-template #loadingIndicator>
+  <div class="row justify-content-around books">
+    Loading...
+  </div>
+</ng-template>
