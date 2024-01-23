@@ -28,7 +28,7 @@ export class BooksSearchComponent {
         map(this.toLowerCase),
       )
       ?.subscribe({
-        next: this.searchBooks
+        next: (query) => this.searchBooks(query)
       });
   }
 
