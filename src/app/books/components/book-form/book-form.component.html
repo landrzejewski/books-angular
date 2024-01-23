@@ -1,21 +1,35 @@
-<div class="book-form">
+<form #bookForm="ngForm" class="book-form" novalidate (ngSubmit)="saveBook(bookForm)">
   <div class="text-center">Book</div>
   <div class="form-group">
     <label>Title:</label>
-    <input class="form-control" [(ngModel)]="book.title">
+    <input #titleInput="ngModel" name="title" class="form-control" [(ngModel)]="book.title" required minlength="3">
+    <app-error-messages [input]="titleInput"/>
   </div>
   <div class="form-group">
     <label>Authors:</label>
-    <input class="form-control" [(ngModel)]="book.authors">
+    <input name="authors" class="form-control" [(ngModel)]="book.authors">
   </div>
   <div class="form-group">
     <label>Category:</label>
-    <input class="form-control" type="color" [(ngModel)]="book.category">
+    <input name="category" class="form-control" type="color" [(ngModel)]="book.category">
   </div>
   <div class="form-group">
-    <input type="checkbox" class="form-check-input" [(ngModel)]="book.isBestseller">
+    <label>Genre:</label>
+    <select name="genre" class="form-control" [(ngModel)]="book.genre">
+      <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="spacer">Rating:</label>
+    <div class="form-check form-check-inline" *ngFor="let value of ratings">
+      <input name="rating" class="form-check-input rating" type="radio" [value]="value" [(ngModel)]="book.rating">
+      <label for="rating{{value}}">{{ value }}</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <input name="isBestseller" type="checkbox" class="form-check-input" [(ngModel)]="book.isBestseller">
     <label class="checkbox-label">Bestseller</label>
   </div>
   <button class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
-  <button class="btn btn-success" (click)="submit.emit(book)">Save</button>
-</div>
+  <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Save</button>
+</form>

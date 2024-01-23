@@ -1,0 +1,7 @@
+.ng-invalid {
+  border: 1px solid rgba(126, 11, 11, 0.6);
+}
+
+.form-control.ng-valid.ng-dirty {
+  border: 1px solid rgba(67, 126, 11, 0.6);
+}
