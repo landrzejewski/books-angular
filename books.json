@@ -1,8 +1,8 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Angular in action",
+      "id": "1",
+      "title": "Angular in actio2",
       "authors": "Jan Kowalski",
       "category": "#ffbe3c",
       "genre": "Education",
@@ -10,7 +10,7 @@
       "isBestseller": true
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "React in action",
       "authors": "Marek Nowak",
       "category": "#4ba5ff",
