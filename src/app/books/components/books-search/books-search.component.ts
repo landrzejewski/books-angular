@@ -1,6 +1,6 @@
 import {Component, Inject, OnDestroy, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {debounceTime, filter, map, Observable, Subject, Subscription} from "rxjs";
+import {debounceTime, distinct, filter, map, mergeMap, Observable, Subject, Subscription, toArray, zip} from "rxjs";
 import {BooksService} from "../../service/books.service";
 import {BookModel} from "../../models/book.model";
 
@@ -53,10 +53,30 @@ export class BooksSearchComponent implements OnDestroy {
   }*/
 
   private searchBooks(query: string) {
-    this.booksService.filter('title', query)
+    const byTitleQuery$ = this.booksService.filter('title', query);
+    const byAuthorsQuery$ = this.booksService.filter('authors', query);
+    const books$ = zip(byTitleQuery$, byAuthorsQuery$)
+      .pipe(
+        map(this.mergeBooks),
+        mergeMap((books) => books)
+      );
+
+    const uniqueBooks$ = books$
+      .pipe(
+        distinct((book) => book.id),
+      );
+
+    uniqueBooks$
+      .pipe(
+        toArray()
+      )
       .subscribe({
         next: (books) => this.emitter.next(books)
       });
+  }
+
+  private mergeBooks(arrays: Array<BookModel[]>) {
+    return arrays.reduce((result, data) => result.concat(data), []);
   }
 
 }
