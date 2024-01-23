@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {ArrayBooksService} from './service/array-books.service';
 import books from './models/books.data';
+import {BookModel} from "./models/book.model";
 
 @NgModule({
   declarations: [
@@ -20,10 +21,18 @@ import books from './models/books.data';
     SharedModule
   ],
   providers: [
-    ArrayBooksService,
     {
       provide: 'booksData',
       useValue: books
+    },
+    /*{
+      provide: 'bookService',
+      useFactory: booksServiceFactory,
+      deps: ['booksData']
+    }*/
+    {
+      provide: 'bookService',
+      useClass: ArrayBooksService
     }
   ],
   exports: [
@@ -31,3 +40,7 @@ import books from './models/books.data';
   ]
 })
 export class BooksModule { }
+
+function booksServiceFactory(booksData: BookModel[]) {
+  return new ArrayBooksService(booksData);
+}

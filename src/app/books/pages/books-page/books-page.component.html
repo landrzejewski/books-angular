@@ -10,7 +10,7 @@
                (submit)="save($event)"/>
 
 <div class="row justify-content-around books">
-  <app-book-card *ngFor="let book of books"
+  <app-book-card *ngFor="let book of books$ | async"
                  [book]="book" class="book-card"
                  [isSelected]="book.id === editedBook?.id"
                  (select)="edit(book)">

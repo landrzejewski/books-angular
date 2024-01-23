@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {BookModel, emptyBook} from '../../models/book.model';
-import {ArrayBooksService} from '../../service/array-books.service';
+import {BooksService} from "../../service/books.service";
+import {EMPTY, Observable} from "rxjs";
 
 @Component({
   selector: 'app-books-page',
@@ -10,10 +11,10 @@ import {ArrayBooksService} from '../../service/array-books.service';
 export class BooksPageComponent {
 
   @Input()
-  books: BookModel[] = [];
+  books$: Observable<BookModel[]> = EMPTY;
   editedBook?: BookModel;
 
-  constructor(private booksService: ArrayBooksService) {
+  constructor(@Inject('bookService') private booksService: BooksService) {
     this.refresh();
   }
 
@@ -26,8 +27,11 @@ export class BooksPageComponent {
   }
 
   save(book: BookModel) {
-    this.booksService.save(book);
-    this.reset();
+    this.booksService.save(book)
+      .subscribe({
+        complete: () => this.reset(),
+        error: (exception) => console.log(exception)
+      })
   }
 
   reset() {
@@ -36,7 +40,7 @@ export class BooksPageComponent {
   }
 
   private refresh() {
-    this.books = this.booksService.getAll();
+    this.books$ = this.booksService.getAll();
   }
 
 }
