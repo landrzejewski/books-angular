@@ -7,7 +7,7 @@
 <app-book-form *ngIf="editedBook"
                [book]="editedBook"
                (cancel)="reset()"
-               (submitBook)="save($event)"/>
+               (save)="save($event)"/>
 
 <app-books-search *ngIf="!editedBook" (queryResult)="onQueryResult($event)"></app-books-search>
 
