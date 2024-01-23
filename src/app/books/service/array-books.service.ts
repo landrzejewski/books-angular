@@ -25,7 +25,7 @@ export class ArrayBooksService {
     }
 
     private update(book: BookModel): BookModel {
-        const bookIndex = this.getBookIndex(book.id);
+        const bookIndex = this.findIndex(book.id);
         if (bookIndex !== -1) {
             const editedBook = {...book};
             const booksClone = this.cloneBooks();
@@ -41,7 +41,7 @@ export class ArrayBooksService {
         return this.books.map((book) => ({...book}));
     }
 
-    private getBookIndex(id: number): number {
+    private findIndex(id: number): number {
         return this.books.findIndex((book) => id === book.id);
     }
 
