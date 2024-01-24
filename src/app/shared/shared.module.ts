@@ -8,6 +8,7 @@ import {HighlightDirective} from "./directives/highlight.directive";
 import {BetterHighlightDirective} from "./directives/better-highlight.directive";
 import {UnlessDirective} from "./directives/unless.directive";
 import {RepeatDirective} from "./directives/repeat.directive";
+import {DateComponent} from "./components/date/date.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {RepeatDirective} from "./directives/repeat.directive";
     HighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    RepeatDirective
+    RepeatDirective,
+    DateComponent
   ],
   imports: [
     CommonModule

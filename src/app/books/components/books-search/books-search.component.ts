@@ -72,7 +72,10 @@ export class BooksSearchComponent implements OnDestroy {
         toArray()
       )
       .subscribe({
-        next: (books) => this.emitter.next(books)
+        next: (books) => {
+          console.log('Search')
+          this.emitter.next(books)
+        }
       });
   }
 
