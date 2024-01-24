@@ -11,8 +11,11 @@ import {LocalStorageUserService} from "./local-storage-user.service";
 export class SecurityService {
 
   user$: Observable<UserModel>;
-
   private subject$: BehaviorSubject<UserModel>;
+
+  get lastUser(): UserModel {
+    return this.subject$.value;
+  }
 
   constructor(private httpClient: HttpClient, private api: ApiConfiguration, private userRepository: LocalStorageUserService) {
     this.subject$ = new BehaviorSubject<UserModel>(userRepository.load());

@@ -14,7 +14,7 @@ export class LocalStorageUserService {
 
   load(): UserModel {
     const userData = localStorage.getItem(this.userKey);
-    return userData ? JSON.parse(userData) as UserModel : new UserModel();
+    return userData ? Object.assign(new UserModel(), JSON.parse(userData)) : new UserModel();
   }
 
   clear() {

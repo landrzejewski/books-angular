@@ -8,8 +8,8 @@ import {SecurityService} from "../../services/security.service";
 })
 export class LoginFormComponent {
 
-    login: string = '';
-    password: string = '';
+    login: string = 'training-client';
+    password: string = 'GoUZzksHi3fFcu6';
     loginError = false;
 
     constructor(private securityService: SecurityService) {
