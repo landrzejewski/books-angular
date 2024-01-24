@@ -13,7 +13,7 @@ export class RepeatDirective {
   @Input()
   set appRepeat(times: number) {
     for (let index = 0; index < times; index++) {
-      //this.container.createEmbeddedView(this.template);
+      this.container.createEmbeddedView(this.template);
 
       //this.container.createComponent<DateComponent>(DateComponent);
 
