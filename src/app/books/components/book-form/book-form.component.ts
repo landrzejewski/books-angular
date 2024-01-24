@@ -30,7 +30,6 @@ export class BookFormComponent implements OnInit, OnDestroy {
         next: (event) => {
           if (event instanceof Scroll) { // NavigationEnd...
             const book = this.route.snapshot.data['book'];
-            console.log(event);
             if (book) {
               this.book = book;
               this.isEditable = false;
