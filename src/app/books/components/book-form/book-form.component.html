@@ -1,26 +1,26 @@
 <form #bookForm="ngForm" class="book-form" novalidate (ngSubmit)="saveBook(bookForm)">
   <div class="text-center">Book</div>
   <div class="form-group">
-    <label>Title:</label>
+    <label>{{ 'books.book-form.title' | translate }}:</label>
     <input #titleInput="ngModel" name="title" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.title" required minlength="3">
     <app-error-messages [input]="titleInput"/>
   </div>
   <div class="form-group">
-    <label>Authors:</label>
+    <label>{{ 'books.book-form.authors' | translate }}:</label>
     <input name="authors" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.authors">
   </div>
   <div class="form-group">
-    <label>Category:</label>
+    <label>{{ 'books.book-form.category' | translate }}:</label>
     <input name="category" class="form-control" type="color" [disabled]="!isEditable" [(ngModel)]="book.category">
   </div>
   <div class="form-group">
-    <label>Genre:</label>
+    <label>{{ 'books.book-form.genre' | translate }}:</label>
     <select name="genre" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.genre">
       <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
     </select>
   </div>
   <div class="form-group">
-    <label class="spacer">Rating:</label>
+    <label class="spacer">{{ 'books.book-form.rating' | translate }}:</label>
     <div class="form-check form-check-inline" *ngFor="let value of ratings">
       <input name="rating" class="form-check-input rating" type="radio" [value]="value"  [disabled]="!isEditable" [(ngModel)]="book.rating">
       <label for="rating{{value}}">{{ value }}</label>
@@ -31,7 +31,7 @@
     <label class="checkbox-label">Bestseller</label>
   </div>
   <div *ngIf="isEditable">
-    <button type="button" class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
-    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Save</button>
+    <button type="button" class="btn btn-danger" (click)="cancel.emit()">{{ 'books.book-form.cancel' | translate }}</button>
+    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">{{ 'books.book-form.save' | translate }}</button>
   </div>
 </form>

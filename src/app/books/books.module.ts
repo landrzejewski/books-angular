@@ -14,6 +14,7 @@ import { BooksSearchComponent } from './components/books-search/books-search.com
 import {BooksRoutingModule} from "./books-routing.module";
 import { BooksListComponent } from './components/books-list/books-list.component';
 import {BooksService} from "./service/books.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 export const BOOKS_SERVICE = new InjectionToken<BooksService>('bookService');
 
@@ -31,7 +32,8 @@ export const BOOKS_SERVICE = new InjectionToken<BooksService>('bookService');
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    TranslateModule
   ],
   providers: [
     {

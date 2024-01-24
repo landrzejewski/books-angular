@@ -1,0 +1,27 @@
+###
+
+//@no-cookie-jar
+//@no-redirect
+POST https://datalenses.org/kc/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=web&grant_type=password&username=jkowalski&password=P@ssw0rd
+
+> {%
+  client.global.set("token", response.body.access_token);
+  client.global.set("refreshToken", response.body.refresh_token);
+%}
+
+###
+
+//@no-cookie-jar
+//@no-redirect
+POST https://datalenses.org/kc/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=web&grant_type=refresh_token&refresh_token={{refreshToken}}
+
+> {%
+  client.global.set("token", response.body.access_token);
+  client.global.set("refreshToken", response.body.refresh_token);
+%}

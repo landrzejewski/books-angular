@@ -1,0 +1,16 @@
+{
+  "books.book-form.header": "Książka",
+  "books.book-form.title": "Tytuł",
+  "books.book-form.authors": "Autorzy",
+  "books.book-form.rating": "Ocena",
+  "books.book-form.category": "Kategoria",
+  "books.book-form.genre": "Typ",
+  "books.book-form.genre-value.education":  "Edukacja",
+  "books.book-form.genre-value.action":  "Akcja",
+  "books.book-form.genre-value.novel": "Nowela",
+  "books.book-form.genre-value.fiction": "Fikcja",
+  "books.book-form.genre-value.romans": "Romans",
+  "books.book-form.bestseller": "Bestseller",
+  "books.book-form.cancel": "Anuluj",
+  "books.book-form.save": "Zapisz"
+}

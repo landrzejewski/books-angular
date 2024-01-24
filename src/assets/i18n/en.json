@@ -1,0 +1,22 @@
+{
+  "books": {
+    "book-form": {
+      "header": "Book",
+      "title": "Title",
+      "authors": "Authors",
+      "rating": "Rating",
+      "category": "Category",
+      "genre": "Genre",
+      "genre-value": {
+        "education":  "Education",
+        "action":  "Action",
+        "novel": "Novel",
+        "fiction": "Fiction",
+        "romans": "Romans"
+      },
+      "bestseller": "Bestseller",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
+  }
+}

@@ -6,8 +6,10 @@ import {FormsModule} from '@angular/forms';
 import {BooksModule} from './books/books.module';
 import {AppRoutingModule} from "./app-routing.module";
 import {SharedModule} from "./shared/shared.module";
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {HttpClient, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {tokenInjectorInterceptor} from "./shared/interceptors/token-injector.interceptor";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,14 @@ import {tokenInjectorInterceptor} from "./shared/interceptors/token-injector.int
     FormsModule,
     BooksModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     provideHttpClient(withInterceptors([tokenInjectorInterceptor]))
