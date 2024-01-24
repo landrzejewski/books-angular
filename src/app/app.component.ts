@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {BookModel} from './books/models/book.model';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,12 @@ import {BookModel} from './books/models/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  username = '';
+
+  logout() {
+  }
+
 }
 
 

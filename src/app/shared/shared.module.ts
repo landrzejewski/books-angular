@@ -9,6 +9,8 @@ import {BetterHighlightDirective} from "./directives/better-highlight.directive"
 import {UnlessDirective} from "./directives/unless.directive";
 import {RepeatDirective} from "./directives/repeat.directive";
 import {DateComponent} from "./components/date/date.component";
+import {LoginFormComponent} from "./components/login-form/login-form.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import {DateComponent} from "./components/date/date.component";
     BetterHighlightDirective,
     UnlessDirective,
     RepeatDirective,
-    DateComponent
+    DateComponent,
+    LoginFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     RatingComponent,
@@ -33,7 +37,8 @@ import {DateComponent} from "./components/date/date.component";
     HighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    RepeatDirective
+    RepeatDirective,
+    LoginFormComponent
   ]
 })
 export class SharedModule { }

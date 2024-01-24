@@ -1,0 +1,17 @@
+<form #loginForm="ngForm" class="login-form" novalidate (ngSubmit)="submit()">
+  <h3 class="text-center">Login form</h3>
+  <div class="form-group">
+    <label>Login:</label>
+    <input #loginInput="ngModel" name="username" class="form-control" [(ngModel)]="login" required>
+    <app-error-messages [input]="loginInput"/>
+  </div>
+  <div class="form-group">
+    <label>Password:</label>
+    <input #passwordInput="ngModel" name="password" type="password" class="form-control" [(ngModel)]="password" required>
+    <app-error-messages [input]="passwordInput"/>
+  </div>
+  <div class="form-group error" *ngIf="loginError">
+    Invalid login or password
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Ok</button>
+ </form>

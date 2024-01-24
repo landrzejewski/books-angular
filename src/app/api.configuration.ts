@@ -5,5 +5,6 @@ import {Injectable} from "@angular/core";
 export class ApiConfiguration {
 
   books = `${environment.baseUrl}/books`
+  login = 'https://datalenses.org/kc/realms/training/protocol/openid-connect/token'
 
 }
