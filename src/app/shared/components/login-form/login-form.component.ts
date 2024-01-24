@@ -9,14 +9,13 @@ import {SecurityService} from "../../services/security.service";
 export class LoginFormComponent {
 
     login: string = 'training-client';
-    password: string = 'GoUZzksHi3fFcu6';
+    password: string = '';
     loginError = false;
 
     constructor(private securityService: SecurityService) {
     }
 
     authenticate() {
-        console.log('sss');
         this.securityService.authenticate(this.login, this.password)
             .subscribe({
                 error: (error) => this.loginError = true
