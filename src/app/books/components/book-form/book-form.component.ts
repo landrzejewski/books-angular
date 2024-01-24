@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {BookModel, emptyBook} from "../../models/book.model";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router, Scroll} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -28,8 +28,9 @@ export class BookFormComponent implements OnInit, OnDestroy {
     this.subscription = router.events
       .subscribe({
         next: (event) => {
-          if (event instanceof NavigationEnd) {
+          if (event instanceof Scroll) { // NavigationEnd...
             const book = this.route.snapshot.data['book'];
+            console.log(event);
             if (book) {
               this.book = book;
               this.isEditable = false;
@@ -40,7 +41,7 @@ export class BookFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    /*this.subscription = this.route.params
+    this.subscription = this.route.params
       .subscribe({
         next: (params) => {
           const book = this.route.snapshot.data['book'];
@@ -49,7 +50,7 @@ export class BookFormComponent implements OnInit, OnDestroy {
             this.isEditable = false;
           }
         }
-      });*/
+      });
   }
 
   ngOnDestroy(): void {
