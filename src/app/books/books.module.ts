@@ -37,7 +37,7 @@ import { BooksSearchComponent } from './components/books-search/books-search.com
       deps: ['booksData']
     }*/
     {
-      provide: 'bookService',
+      provide: 'booksService',
       useClass: HttpBooksService
     }
   ],

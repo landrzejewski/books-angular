@@ -14,7 +14,7 @@ export class BooksPageComponent {
   books$: Observable<BookModel[]> = EMPTY;
   editedBook?: BookModel;
 
-  constructor(@Inject('bookService') private booksService: BooksService) {
+  constructor(@Inject('booksService') private booksService: BooksService) {
     this.refresh();
   }
 

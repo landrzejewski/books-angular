@@ -20,7 +20,7 @@ export class BooksSearchComponent implements OnDestroy {
   @Output()
   queryResult: Observable<BookModel[]> = this.emitter;
 
-  constructor(@Inject('bookService') private booksService: BooksService) {
+  constructor(@Inject('booksService') private booksService: BooksService) {
     this.subscription = this.queryForm.get('queryInput')
       ?.valueChanges
       ?.pipe(
