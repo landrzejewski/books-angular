@@ -12,12 +12,14 @@ const routes: Routes = [
   },
   {
     path: 'books/list',
-    component: BooksListComponent
-  },
-  {
-    path: 'books/list/:id',
-    component: BookFormComponent,
-    resolve: { book: bookResolver }
+    component: BooksListComponent,
+    children: [
+      {
+        path: ':id',
+        component: BookFormComponent,
+        resolve: { book: bookResolver }
+      }
+    ]
   }
 ];
 
