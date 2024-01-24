@@ -11,6 +11,7 @@ import {BookModel} from "./models/book.model";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpBooksService} from "./service/http-books.service";
 import { BooksSearchComponent } from './components/books-search/books-search.component';
+import {BooksRoutingModule} from "./books-routing.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BooksSearchComponent } from './components/books-search/books-search.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BooksRoutingModule
   ],
   providers: [
     {

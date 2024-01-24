@@ -1,3 +1,4 @@
 export const environment = {
-  baseUrl: 'https://books-backend'
+  baseUrl: 'https://books-backend',
+  enableTracing: false
 };
