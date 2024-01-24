@@ -2,34 +2,36 @@
   <div class="text-center">Book</div>
   <div class="form-group">
     <label>Title:</label>
-    <input #titleInput="ngModel" name="title" class="form-control" [(ngModel)]="book.title" required minlength="3">
+    <input #titleInput="ngModel" name="title" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.title" required minlength="3">
     <app-error-messages [input]="titleInput"/>
   </div>
   <div class="form-group">
     <label>Authors:</label>
-    <input name="authors" class="form-control" [(ngModel)]="book.authors">
+    <input name="authors" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.authors">
   </div>
   <div class="form-group">
     <label>Category:</label>
-    <input name="category" class="form-control" type="color" [(ngModel)]="book.category">
+    <input name="category" class="form-control" type="color" [disabled]="!isEditable" [(ngModel)]="book.category">
   </div>
   <div class="form-group">
     <label>Genre:</label>
-    <select name="genre" class="form-control" [(ngModel)]="book.genre">
+    <select name="genre" class="form-control" [disabled]="!isEditable" [(ngModel)]="book.genre">
       <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
     </select>
   </div>
   <div class="form-group">
     <label class="spacer">Rating:</label>
     <div class="form-check form-check-inline" *ngFor="let value of ratings">
-      <input name="rating" class="form-check-input rating" type="radio" [value]="value" [(ngModel)]="book.rating">
+      <input name="rating" class="form-check-input rating" type="radio" [value]="value"  [disabled]="!isEditable" [(ngModel)]="book.rating">
       <label for="rating{{value}}">{{ value }}</label>
     </div>
   </div>
   <div class="form-group">
-    <input name="isBestseller" type="checkbox" class="form-check-input" [(ngModel)]="book.isBestseller">
+    <input name="isBestseller" type="checkbox" class="form-check-input" [disabled]="!isEditable" [(ngModel)]="book.isBestseller">
     <label class="checkbox-label">Bestseller</label>
   </div>
-  <button type="button" class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
-  <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Save</button>
+  <div *ngIf="isEditable">
+    <button type="button" class="btn btn-danger" (click)="cancel.emit()">Cancel</button>
+    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Save</button>
+  </div>
 </form>

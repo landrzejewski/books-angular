@@ -2,6 +2,7 @@ import {Component, Inject, Input} from '@angular/core';
 import {BookModel, emptyBook} from '../../models/book.model';
 import {BooksService} from "../../service/books.service";
 import {EMPTY, Observable, of} from "rxjs";
+import {BOOKS_SERVICE} from "../../books.module";
 
 @Component({
   selector: 'app-books-page',
@@ -14,7 +15,7 @@ export class BooksPageComponent {
   books$: Observable<BookModel[]> = EMPTY;
   editedBook?: BookModel;
 
-  constructor(@Inject('bookService') private booksService: BooksService) {
+  constructor(@Inject(BOOKS_SERVICE) private booksService: BooksService) {
     this.refresh();
   }
 

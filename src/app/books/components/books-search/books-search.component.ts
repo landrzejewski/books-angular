@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {debounceTime, distinct, filter, map, mergeMap, Observable, Subject, Subscription, toArray, zip} from "rxjs";
 import {BooksService} from "../../service/books.service";
 import {BookModel} from "../../models/book.model";
+import {BOOKS_SERVICE} from "../../books.module";
 
 @Component({
   selector: 'app-books-search',
@@ -20,7 +21,7 @@ export class BooksSearchComponent implements OnDestroy {
   @Output()
   queryResult: Observable<BookModel[]> = this.emitter;
 
-  constructor(@Inject('bookService') private booksService: BooksService) {
+  constructor(@Inject(BOOKS_SERVICE) private booksService: BooksService) {
     this.subscription = this.queryForm.get('queryInput')
       ?.valueChanges
       ?.pipe(

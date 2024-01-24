@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BookCardComponent} from './components/book-card/book-card.component';
 import {BookFormComponent} from './components/book-form/book-form.component';
@@ -12,13 +12,18 @@ import {HttpClientModule} from "@angular/common/http";
 import {HttpBooksService} from "./service/http-books.service";
 import { BooksSearchComponent } from './components/books-search/books-search.component';
 import {BooksRoutingModule} from "./books-routing.module";
+import { BooksListComponent } from './components/books-list/books-list.component';
+import {BooksService} from "./service/books.service";
+
+export const BOOKS_SERVICE = new InjectionToken<BooksService>('bookService');
 
 @NgModule({
   declarations: [
     BookCardComponent,
     BookFormComponent,
     BooksPageComponent,
-    BooksSearchComponent
+    BooksSearchComponent,
+    BooksListComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +44,7 @@ import {BooksRoutingModule} from "./books-routing.module";
       deps: ['booksData']
     }*/
     {
-      provide: 'bookService',
+      provide: BOOKS_SERVICE,
       useClass: HttpBooksService
     }
   ],

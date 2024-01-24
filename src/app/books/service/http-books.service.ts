@@ -11,6 +11,10 @@ export class HttpBooksService implements BooksService {
   constructor(private api: ApiConfiguration, private httpClient: HttpClient) {
   }
 
+  getById(id: number): Observable<BookModel> {
+    return this.httpClient.get<BookModel>(`${this.api.books}/${id}`);
+  }
+
   getAll(): Observable<BookModel[]> {
     return this.httpClient.get<BookModel[]>(this.api.books);
   }

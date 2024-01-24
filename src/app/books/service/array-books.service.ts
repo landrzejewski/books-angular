@@ -1,7 +1,8 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {BookModel, emptyBookId} from '../models/book.model';
 import {BooksService} from "./books.service";
-import {Observable, of, throwError} from "rxjs";
+import {EMPTY, findIndex, Observable, of, throwError} from "rxjs";
+import books from "../models/books.data";
 
 @Injectable()
 export class ArrayBooksService implements BooksService {
@@ -9,6 +10,15 @@ export class ArrayBooksService implements BooksService {
   constructor(@Inject("booksData") @Optional() private books: BookModel[]) {
     if (!books) {
       this.books = [];
+    }
+  }
+
+  getById(id: number): Observable<BookModel> {
+    const index = this.findIndex(id);
+    if (index === -1) {
+      return EMPTY;
+    } else {
+      return of({...this.books[index]});
     }
   }
 
@@ -39,7 +49,7 @@ export class ArrayBooksService implements BooksService {
       this.books = booksClone;
       return of(editedBook);
     } else {
-      return throwError(() =>'Book not found');
+      return throwError(() => 'Book not found');
     }
   }
 
